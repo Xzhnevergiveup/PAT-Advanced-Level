@@ -1,0 +1,29 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+public class Main {
+  public static void main(String[] args) {
+    Scanner input=new Scanner(System.in);
+    int a=input.nextInt();
+    int b=input.nextInt();
+    int c=a+b;
+    int count=0;
+    String string=String.valueOf(c);
+    ArrayList<String> format=new ArrayList<String>();
+    for(int i=string.length()-1;i>=0;i--) {
+      if(count==3) {
+        format.add(",");
+        count=0;
+      }
+      format.add(string.substring(i, i+1));
+      count++;
+    }
+    if(format.get(format.size()-1).compareTo("-")==0 && 
+        format.get(format.size()-2).compareTo(",")==0) {
+      format.remove(format.size()-2);
+    }
+    for(int i=format.size()-1;i>=0;i--) 
+      System.out.print(format.get(i));
+    System.out.println();
+  }
+
+}
